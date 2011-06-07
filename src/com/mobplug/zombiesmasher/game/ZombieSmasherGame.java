@@ -4,7 +4,8 @@ import com.mobplug.games.framework.BaseGame;
 
 public class ZombieSmasherGame extends BaseGame {
 	private static final long serialVersionUID = 1L;
-
+	private GameObjectManager gameObjectManager = new GameObjectManager();
+	
 	@Override
 	public int getUpdateCount() {
 		// TODO Auto-generated method stub
@@ -17,7 +18,7 @@ public class ZombieSmasherGame extends BaseGame {
 		
 		// TODO update player
 		
-		// TODO update zombies and humans
+		gameObjectManager.update(gameTime);
 		
 		// TODO check for game over
 	}
