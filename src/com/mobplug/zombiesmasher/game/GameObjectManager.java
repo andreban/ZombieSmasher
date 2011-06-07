@@ -20,6 +20,7 @@ public class GameObjectManager {
 	public void update(long gameTime) {
 		for (GameObject obj: gameObjects) {
 			//TODO Preview the Object update
+			obj.update(gameTime);			
 			
 			boolean collided = checkCollision(obj, gameObjects);
 			if (collided) {
@@ -35,5 +36,9 @@ public class GameObjectManager {
 			collided |= obj.collidesWith(other);
 		}
 		return collided;
+	}
+	
+	public Collection<GameObject> getGameObjects() {
+		return gameObjects;
 	}
 }
