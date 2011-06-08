@@ -1,15 +1,16 @@
 package com.mobplug.zombiesmasher;
 
-import com.mobplug.android.games.framework.GameSurfaceView2D;
-import com.mobplug.games.framework.BaseGameRunnable;
-import com.mobplug.games.framework.interfaces.GameRunnable;
-import com.mobplug.zombiesmasher.game.ZombieSmasherGame;
-import com.mobplug.zombiesmasher.game.renderer.ZombieSmasherRenderer;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.mobplug.android.games.framework.GameSurfaceView2D;
+import com.mobplug.games.framework.BaseGameRunnable;
+import com.mobplug.games.framework.interfaces.GameRunnable;
+import com.mobplug.zombiesmasher.game.InputManager;
+import com.mobplug.zombiesmasher.game.ZombieSmasherGame;
+import com.mobplug.zombiesmasher.game.renderer.ZombieSmasherRenderer;
 
 public class GameActivity extends Activity {
 	private GameRunnable gameRunnable;
@@ -23,10 +24,12 @@ public class GameActivity extends Activity {
         setContentView(R.layout.gamelayout);
                 
         GameSurfaceView2D surfaceView = (GameSurfaceView2D)findViewById(R.id.gamesurface);
-        ZombieSmasherGame game = new ZombieSmasherGame();
+        InputManager im = new InputManager();
+        final ZombieSmasherGame game = new ZombieSmasherGame(im);
         ZombieSmasherRenderer renderer = new ZombieSmasherRenderer(surfaceView.getHolder(), game);
         gameRunnable = new BaseGameRunnable<ZombieSmasherGame>(renderer, game);
-        surfaceView.init(gameRunnable);                      
+        surfaceView.init(gameRunnable);     
+        surfaceView.setOnTouchListener(im);
 	}
 	
 	@Override

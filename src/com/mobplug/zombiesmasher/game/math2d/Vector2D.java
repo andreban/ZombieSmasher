@@ -1,6 +1,7 @@
 package com.mobplug.zombiesmasher.game.math2d;
 
 public class Vector2D {
+	
 	private float x = 0.0f;
 	private float y = 0.0f;
 	
@@ -40,7 +41,7 @@ public class Vector2D {
 	}
 	
 	public void set(Vector2D v) {
-		this.set(v.getX(), v.getX());
+		this.set(v.getX(), v.getY());
 	}
 	
 	public void add(float x, float y) {
@@ -65,8 +66,28 @@ public class Vector2D {
 		y *= magnitude;
 	}
 	
-	public void divide(float magnitude) {
+	public void divide(float magnitude) {		
 		x /= magnitude;
 		y /= magnitude;
 	}
+	
+	public float getMagnitude() {
+		return (float)Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+	}
+	
+    public void setBearing(float angdeg, float magnitude) {
+        double rads = Math.toRadians(angdeg);
+        double sinAngle = Math.sin(rads);
+        double cosAngle = Math.cos(rads);
+        float newX = (float)(x * cosAngle - y * sinAngle);
+        float newY = (float)(x * sinAngle + y * cosAngle);
+        set(newX, newY);
+    }
+    
+	public void setBearing(float angdeg) {
+		float magnitude = getMagnitude();
+        setBearing(angdeg, magnitude);
+	}
+	
+
 }

@@ -30,7 +30,7 @@ public class ZombieSmasherRenderer extends AndroidGameRenderer2D<ZombieSmasherGa
 		Collection<GameObject> objects = game.getGameObjects();
 		for (GameObject obj: objects) {
 			Vector2D vec = obj.getPosition();
-			canvas.drawCircle(vec.getX(), vec.getY(), obj.getCollisionRadius(), bluePaint);
+			canvas.drawCircle((float)vec.getX(), (float)vec.getY(), obj.getCollisionRadius(), bluePaint);
 		}
 		
 	}

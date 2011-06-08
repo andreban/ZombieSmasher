@@ -7,10 +7,12 @@ import com.mobplug.zombiesmasher.game.entities.GameObject;
 
 public class ZombieSmasherGame extends BaseGame {
 	private static final long serialVersionUID = 1L;
-	private GameObjectManager gameObjectManager = new GameObjectManager();
-	    
-	public ZombieSmasherGame() {
+	private GameObjectManager gameObjectManager = new GameObjectManager();	
+	private InputManager inputManager;
+	
+	public ZombieSmasherGame(InputManager inputManager) {
 		super();
+		this.inputManager = inputManager;		
 		init();
 	}
 
@@ -33,7 +35,9 @@ public class ZombieSmasherGame extends BaseGame {
 	public void update(long gameTime) {		
 		// TODO read controls
 		
-		// TODO update player
+		if (inputManager.isFirePressed()) {
+
+		}
 		
 		gameObjectManager.update(gameTime);
 		

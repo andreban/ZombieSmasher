@@ -17,5 +17,5 @@ public class GameEntity extends GameObject {
 	
 	public void setBearing(float bearing) {
 		
-	}	
+	}		
 }
