@@ -26,6 +26,9 @@ public class GameObjectManager {
 			if (collided) {
 				//TODO Revert to original position!
 			}
+			
+			//Remove the game Object so it can be Garbage Collected!!
+			if (obj.isDestroyed()) gameObjects.remove(obj);
 		}
 	}
 	

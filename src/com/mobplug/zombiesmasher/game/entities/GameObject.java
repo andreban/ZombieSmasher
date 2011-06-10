@@ -26,4 +26,8 @@ public class GameObject {
 	public void update(long gameTime) {
 		
 	}
+	
+	public boolean isDestroyed() {
+		return false;
+	}
 }

@@ -11,6 +11,10 @@ public class InputManager implements OnTouchListener {
 	private boolean firePressed = false;
 	private PointF firePoint = new PointF();
 		
+	public void setFirePresset(boolean firePressed) {
+		this.firePressed = firePressed;
+	}
+	
 	public boolean isFirePressed() {
 		return firePressed;
 	}
@@ -26,9 +30,7 @@ public class InputManager implements OnTouchListener {
 			Log.d(TAG, String.format("Touched %f, %f", event.getX(), event.getY()));
 			firePressed = true;
 			firePoint.set(event.getX(), event.getY());
-		} else {			
-			firePressed = false;
-		}
+		} 
 		return true;
 	}
 }
