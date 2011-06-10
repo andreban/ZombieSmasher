@@ -40,7 +40,7 @@ public class ZombieSmasherGame extends BaseGame {
 		
 		if (inputManager.isFirePressed()) {
 			PointF point = inputManager.getFirePoint();
-			Bullet bullet = player.fire(point.x, point.y);
+			Bullet bullet = player.fire(gameTime, point.x, point.y);
 			inputManager.setFirePresset(false);
 			gameObjectManager.addObject(bullet);
 		}

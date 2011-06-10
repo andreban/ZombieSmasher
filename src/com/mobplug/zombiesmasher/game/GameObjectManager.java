@@ -30,6 +30,7 @@ public class GameObjectManager {
 			//Remove the game Object so it can be Garbage Collected!!
 			if (obj.isDestroyed()) gameObjects.remove(obj);
 		}
+		
 	}
 	
 	public boolean checkCollision(GameObject obj, Collection<GameObject> gameObjects) {

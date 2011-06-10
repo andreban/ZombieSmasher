@@ -9,8 +9,8 @@ public class Weapon {
 	private int damage;
 	private float radius = 5f;
 	
-	public Bullet fire(float x, float y) {
-		Bullet bullet = new Bullet(new Vector2D(x, y), radius, 0);
+	public Bullet fire(long gameTime, float x, float y) {
+		Bullet bullet = new Bullet(new Vector2D(x, y), gameTime);
 		
 		return bullet;
 	}
