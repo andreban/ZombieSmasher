@@ -8,6 +8,7 @@ import com.mobplug.games.framework.BaseGame;
 import com.mobplug.zombiesmasher.game.entities.Bullet;
 import com.mobplug.zombiesmasher.game.entities.GameObject;
 import com.mobplug.zombiesmasher.game.entities.Player;
+import com.mobplug.zombiesmasher.game.entities.Zombie;
 
 public class ZombieSmasherGame extends BaseGame {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +23,7 @@ public class ZombieSmasherGame extends BaseGame {
 	}
 
 	protected void init() {
-		GameObject obj = new GameObject();
+		GameObject obj = new Zombie();
 		obj.getPosition().set(100f, 100f);
 		obj.setCollistionRadius(10f);
 		gameObjectManager.addObject(obj);

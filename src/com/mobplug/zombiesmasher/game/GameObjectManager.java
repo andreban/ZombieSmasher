@@ -2,6 +2,7 @@ package com.mobplug.zombiesmasher.game;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import com.mobplug.zombiesmasher.game.entities.GameObject;
@@ -25,10 +26,14 @@ public class GameObjectManager {
 			boolean collided = checkCollision(obj, gameObjects);
 			if (collided) {
 				//TODO Revert to original position!
-			}
-			
-			//Remove the game Object so it can be Garbage Collected!!
-			if (obj.isDestroyed()) gameObjects.remove(obj);
+			}		
+		}
+		
+		//Remove Destroyed Objects!
+		Iterator<GameObject> it = gameObjects.iterator();
+		while (it.hasNext()) {
+			GameObject obj = it.next();
+			if (obj.isDestroyed()) it.remove();
 		}
 		
 	}
