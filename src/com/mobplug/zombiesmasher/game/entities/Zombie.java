@@ -7,8 +7,11 @@ public class Zombie extends GameEntity {
 	public Zombie() {
 		super(new Vector2D(1.0f, 0.0f));
 	}
+	
 	@Override
-	public void update(long gameTime) {
-		super.update(gameTime);		
+	public void update(long gameTime) {		
+		float angle = (float)(Math.random() * 360);
+		speed.setBearing(angle);
+		super.update(gameTime);				
 	}
 }

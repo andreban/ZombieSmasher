@@ -3,11 +3,11 @@ package com.mobplug.zombiesmasher.game.entities;
 import com.mobplug.zombiesmasher.game.math2d.Vector2D;
 
 public class Bullet extends GameEntity {
-	private static final long DEFAULT_DESTROY_TIMEOUT = 1000L * 5L; //5 seconds
+	private static final long DEFAULT_DESTROY_TIMEOUT = 1000L * 1L; //1 seconds
 	private static final long DEFAULT_TIME_TO_LIVE = 0L;
 	private static final float DEFAULT_RADIUS = 5.0f;
 	
-	private enum State {ALIVE, DEAD, DESTROYED}
+	public enum State {ALIVE, DEAD, DESTROYED}
 	
 	private State state = State.ALIVE;
 	
@@ -35,6 +35,9 @@ public class Bullet extends GameEntity {
 		}
 	}
 	
+	public State getState() {
+		return this.state;
+	}
 	@Override
 	public boolean isDestroyed() {
 		return state == State.DESTROYED;
