@@ -76,18 +76,27 @@ public class Vector2D {
 	}
 	
     public void setBearing(float angdeg, float magnitude) {
+    	x = magnitude;
+    	y = 0;    	
+    	setBearing(angdeg);
+    }  
+    
+	public void setBearing(float angdeg) {
         double rads = Math.toRadians(angdeg);
         double sinAngle = Math.sin(rads);
         double cosAngle = Math.cos(rads);
         float newX = (float)(x * cosAngle - y * sinAngle);
         float newY = (float)(x * sinAngle + y * cosAngle);
         set(newX, newY);
-    }
-    
-	public void setBearing(float angdeg) {
-		float magnitude = getMagnitude();
-        setBearing(angdeg, magnitude);
 	}
-	
 
+	public float getBearing() {
+		double rads = Math.tan(y / x);
+		return (float)Math.toDegrees(rads);
+	}
+
+	@Override
+	public String toString() {
+		return "Vector2D [x=" + x + ", y=" + y + "]";
+	}	
 }

@@ -2,7 +2,7 @@ package com.mobplug.zombiesmasher.game.entities;
 
 import com.mobplug.zombiesmasher.game.math2d.Vector2D;
 
-public class Bullet extends GameEntity {
+public class Bullet extends GameObject {
 	private static final long DEFAULT_DESTROY_TIMEOUT = 1000L * 1L; //1 seconds
 	private static final long DEFAULT_TIME_TO_LIVE = 0L;
 	private static final float DEFAULT_RADIUS = 5.0f;
@@ -38,8 +38,10 @@ public class Bullet extends GameEntity {
 	public State getState() {
 		return this.state;
 	}
+	
 	@Override
 	public boolean isDestroyed() {
 		return state == State.DESTROYED;
 	}
+		
 }

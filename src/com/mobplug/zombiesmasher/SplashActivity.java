@@ -1,7 +1,5 @@
 package com.mobplug.zombiesmasher;
 
-import com.mobplug.zombiesmasher.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

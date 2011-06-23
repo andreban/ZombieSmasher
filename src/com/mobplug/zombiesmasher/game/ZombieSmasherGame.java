@@ -1,20 +1,21 @@
 package com.mobplug.zombiesmasher.game;
 
 import java.util.Collection;
+import java.util.Random;
 
 import android.graphics.PointF;
 
 import com.mobplug.games.framework.BaseGame;
 import com.mobplug.zombiesmasher.game.entities.Bullet;
 import com.mobplug.zombiesmasher.game.entities.GameObject;
+import com.mobplug.zombiesmasher.game.entities.Human;
 import com.mobplug.zombiesmasher.game.entities.Player;
-import com.mobplug.zombiesmasher.game.entities.Zombie;
 
 public class ZombieSmasherGame extends BaseGame {
 	private static final long serialVersionUID = 1L;
 	private GameObjectManager gameObjectManager = new GameObjectManager();	
 	private InputManager inputManager;
-	private Player player = new Player();
+	private Player player = new Player();	
 	
 	public ZombieSmasherGame(InputManager inputManager) {
 		super();
@@ -23,10 +24,14 @@ public class ZombieSmasherGame extends BaseGame {
 	}
 
 	protected void init() {
-		GameObject obj = new Zombie();
-		obj.getPosition().set(100f, 100f);
-		obj.setCollistionRadius(10f);
-		gameObjectManager.addObject(obj);
+		Random random = new Random();
+		for (int i = 0; i < 20; i++) {			
+			GameObject obj = new Human(random.nextBoolean(), 0L);
+			obj.getPosition().set((float)(Math.random() * 300), (float)(Math.random() * 300));
+			obj.setCollistionRadius(10f);
+			gameObjectManager.addObject(obj);			
+		}
+
 	}
 	
 	@Override
@@ -36,9 +41,7 @@ public class ZombieSmasherGame extends BaseGame {
 	}
 
 	@Override
-	public void update(long gameTime) {		
-		// TODO read controls
-		
+	public void update(long gameTime) {				
 		if (inputManager.isFirePressed()) {
 			PointF point = inputManager.getFirePoint();
 			Bullet bullet = player.fire(gameTime, point.x, point.y);
