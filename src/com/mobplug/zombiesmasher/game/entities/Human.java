@@ -51,7 +51,7 @@ public class Human extends GameEntity {
 					}
 				}
 				if (closer != null) {
-					getSpeed().setBearing(getPosition().bearingFrom(closer.getPosition()));
+					getSpeed().rotate((getPosition().bearingFrom(closer.getPosition())));
 				}
 				findTargetTime = gameTime + FIND_TARGET_TIMEOUT;
 			}
