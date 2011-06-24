@@ -91,10 +91,19 @@ public class Vector2D {
 	}
 
 	public float getBearing() {
-		double rads = Math.tan(y / x);
+		double rads = Math.atan2(y, x);
 		return (float)Math.toDegrees(rads);
 	}
 
+	public float distanceFrom(Vector2D v2d) {
+		return (float)Math.abs(Math.sqrt(Math.pow(v2d.x - this.x, 2) + Math.pow(v2d.y - this.y, 2)));
+	}
+	
+	public float bearingFrom(Vector2D v2d) {
+		double rads = Math.atan2((v2d.y - this.y), (v2d.x - this.x));
+		return (float)Math.toDegrees(rads);
+	}
+	
 	@Override
 	public String toString() {
 		return "Vector2D [x=" + x + ", y=" + y + "]";

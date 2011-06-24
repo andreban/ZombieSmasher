@@ -1,5 +1,7 @@
 package com.mobplug.zombiesmasher.game.entities;
 
+import java.util.Collection;
+
 import com.mobplug.zombiesmasher.game.math2d.Vector2D;
 
 public class Bullet extends GameObject {
@@ -25,8 +27,8 @@ public class Bullet extends GameObject {
 	}
 	
 	@Override
-	public void update(long gameTime) {
-		super.update(gameTime);		
+	public void update(Collection<GameObject> others, long gameTime) {
+		super.update(others, gameTime);		
 		if (state == State.ALIVE && timeCreated + timeToLive < gameTime) {
 			state = State.DEAD;
 			timeDied = gameTime;

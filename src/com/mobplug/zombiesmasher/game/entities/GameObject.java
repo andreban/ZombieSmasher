@@ -1,5 +1,7 @@
 package com.mobplug.zombiesmasher.game.entities;
 
+import java.util.Collection;
+
 import com.mobplug.zombiesmasher.game.math2d.Vector2D;
 
 public abstract class GameObject {
@@ -37,7 +39,7 @@ public abstract class GameObject {
 		this.collisionRadius = newRadius;
 	}
 	
-	public void update(long gameTime) {
+	public void update(Collection<GameObject> allObjects, long gameTime) {
 		lastGameUpdate = gameTime;
 	}
 	

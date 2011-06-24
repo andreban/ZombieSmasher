@@ -26,7 +26,7 @@ public class GameObjectManager {
 			oldPosition.set(obj.getPosition());
 			
 			//update object
-			obj.update(gameTime);			
+			obj.update(gameObjects, gameTime);			
 					
 			if (obj.isDestroyed()) {
 				gameObjects.remove(i);

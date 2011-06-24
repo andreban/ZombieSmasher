@@ -1,5 +1,7 @@
 package com.mobplug.zombiesmasher.game.entities;
 
+import java.util.Collection;
+
 import com.mobplug.zombiesmasher.game.math2d.Vector2D;
 
 public abstract class GameEntity extends GameObject {	
@@ -26,8 +28,8 @@ public abstract class GameEntity extends GameObject {
 	}		
 		
 	@Override
-	public void update(long gameTime) {
-		super.update(gameTime);		
+	public void update(Collection<GameObject> others, long gameTime) {
+		super.update(others, gameTime);		
 		position.add(speed);
 	}	
 }
