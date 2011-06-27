@@ -51,7 +51,8 @@ public class Human extends GameEntity {
 					}
 				}
 				if (closer != null) {
-					getSpeed().rotate((getPosition().bearingFrom(closer.getPosition())));
+					float bearingFrom = getPosition().bearingFrom(closer.getPosition());
+					speed.setBearing(bearingFrom);
 				}
 				findTargetTime = gameTime + FIND_TARGET_TIMEOUT;
 			}
@@ -62,7 +63,9 @@ public class Human extends GameEntity {
 	@Override
 	public boolean collidesWith(GameObject other) {
 		if (state == State.DEAD) return false;
-		return super.collidesWith(other);
+		boolean collided = super.collidesWith(other);
+		if (other instanceof Bullet) return collided;
+		return false;
 	}
 	
 	@Override

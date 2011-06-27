@@ -23,9 +23,9 @@ public abstract class GameEntity extends GameObject {
 		this.speed = speed;
 	}
 	
-	public void setBearing(float bearing) {
-		speed.setBearing(bearing);
-	}		
+//	public void setBearing(float bearing) {
+//		speed.setBearing(bearing);
+//	}		
 		
 	@Override
 	public void update(Collection<GameObject> others, long gameTime) {

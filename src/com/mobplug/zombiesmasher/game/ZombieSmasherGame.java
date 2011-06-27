@@ -25,12 +25,18 @@ public class ZombieSmasherGame extends BaseGame {
 
 	protected void init() {
 		Random random = new Random();
-		for (int i = 0; i < 20; i++) {			
-			GameObject obj = new Human(random.nextBoolean(), 0L);
+		for (int i = 0; i < 5; i++) {			
+			GameObject obj = new Human(true, 0L);
 			obj.getPosition().set((float)(Math.random() * 300), (float)(Math.random() * 300));
 			obj.setCollistionRadius(10f);
 			gameObjectManager.addObject(obj);			
 		}
+		for (int i = 0; i < 20; i++) {			
+			GameObject obj = new Human(false, 0L);
+			obj.getPosition().set((float)(Math.random() * 300), (float)(Math.random() * 300));
+			obj.setCollistionRadius(10f);
+			gameObjectManager.addObject(obj);			
+		}		
 
 	}
 	

@@ -95,6 +95,16 @@ public class Vector2D implements Cloneable {
         y = newY;
     }
     
+    public void setBearing(float bearing) {
+        float length = getLength();
+        double rads = Math.toRadians(bearing);
+        double sin = Math.sin(rads);
+        double cos = Math.cos(rads);
+        float newy = (float)(sin * length);
+        float newx = (float)(cos * length);
+        set(newx, newy);
+    }    
+    
     public void rotate(float angle) {
         rotate((float)Math.cos(angle), (float)Math.sin(angle));
     }
