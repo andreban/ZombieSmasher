@@ -1,7 +1,6 @@
 package com.mobplug.zombiesmasher.game;
 
 import java.util.Collection;
-import java.util.Random;
 
 import android.graphics.PointF;
 
@@ -24,17 +23,16 @@ public class ZombieSmasherGame extends BaseGame {
 	}
 
 	protected void init() {
-		Random random = new Random();
 		for (int i = 0; i < 5; i++) {			
 			GameObject obj = new Human(true, 0L);
-			obj.getPosition().set((float)(Math.random() * 300), (float)(Math.random() * 300));
-			obj.setCollistionRadius(10f);
+			obj.getPosition().set((float)(Math.random() * GameObjectManager.BOARD_WIDTH), (float)(Math.random() * GameObjectManager.BOARD_HEIGHT));
+			obj.setCollistionRadius(50f);
 			gameObjectManager.addObject(obj);			
 		}
 		for (int i = 0; i < 20; i++) {			
 			GameObject obj = new Human(false, 0L);
-			obj.getPosition().set((float)(Math.random() * 300), (float)(Math.random() * 300));
-			obj.setCollistionRadius(10f);
+			obj.getPosition().set((float)(Math.random() * GameObjectManager.BOARD_WIDTH), (float)(Math.random() * GameObjectManager.BOARD_HEIGHT));
+			obj.setCollistionRadius(50f);
 			gameObjectManager.addObject(obj);			
 		}		
 

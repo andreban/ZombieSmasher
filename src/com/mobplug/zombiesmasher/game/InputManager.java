@@ -26,10 +26,20 @@ public class InputManager implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
+		float bwidth, bheight = 0.0f;
+		if (v.getWidth() > v.getHeight()) {
+			bheight = v.getHeight();
+			bwidth = bheight * 1.6f; 
+		} else {
+			bwidth = v.getWidth();
+			bheight = bwidth / 1.6f;
+		}		
 		if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
 			Log.d(TAG, String.format("Touched %f, %f", event.getX(), event.getY()));
+			float x = GameObjectManager.BOARD_WIDTH * event.getX() / bwidth;
+			float y = GameObjectManager.BOARD_HEIGHT * event.getY() / bheight;			
 			firePressed = true;
-			firePoint.set(event.getX(), event.getY());
+			firePoint.set(x, y);
 		} 
 		return true;
 	}

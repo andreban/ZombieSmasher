@@ -8,6 +8,10 @@ import com.mobplug.zombiesmasher.game.entities.GameObject;
 import com.mobplug.zombiesmasher.game.math2d.Vector2D;
 
 public class GameObjectManager {
+	public static final float BOARD_WIDTH = 1280f;
+	public static final float BOARD_HEIGHT = 800f;
+	public static final float RATIO = BOARD_WIDTH / BOARD_HEIGHT;
+	
 	private List<GameObject> gameObjects = new ArrayList<GameObject>();
 	private Vector2D oldPosition = new Vector2D();
 	
@@ -34,7 +38,7 @@ public class GameObjectManager {
 			}
 			
 			//test collision!
-			boolean collided = checkCollision(obj, gameObjects);
+			boolean collided = checkCollision(obj, gameObjects) || checkWallCollision(obj);
 			
 			//if collided, reset movement!
 			if (collided) {
@@ -52,6 +56,15 @@ public class GameObjectManager {
 		return collided;
 	}
 	
+	public boolean checkWallCollision(GameObject obj) {
+		if (obj.getPosition().getX() < 0.0f
+				|| obj.getPosition().getX() > BOARD_WIDTH
+				|| obj.getPosition().getY() < 0.0f
+				|| obj.getPosition().getY() > BOARD_HEIGHT) {
+			return true;
+		}
+		return false;
+	}
 	public Collection<GameObject> getGameObjects() {
 		return gameObjects;
 	}
