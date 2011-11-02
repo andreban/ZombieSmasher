@@ -26,13 +26,13 @@ public class ZombieSmasherGame extends BaseGame {
 		for (int i = 0; i < 5; i++) {			
 			GameObject obj = new Human(true, 0L);
 			obj.getPosition().set((float)(Math.random() * GameObjectManager.BOARD_WIDTH), (float)(Math.random() * GameObjectManager.BOARD_HEIGHT));
-			obj.setCollistionRadius(50f);
+			obj.setCollistionRadius(32f);
 			gameObjectManager.addObject(obj);			
 		}
 		for (int i = 0; i < 20; i++) {			
 			GameObject obj = new Human(false, 0L);
 			obj.getPosition().set((float)(Math.random() * GameObjectManager.BOARD_WIDTH), (float)(Math.random() * GameObjectManager.BOARD_HEIGHT));
-			obj.setCollistionRadius(50f);
+			obj.setCollistionRadius(32f);
 			gameObjectManager.addObject(obj);			
 		}		
 
@@ -48,9 +48,11 @@ public class ZombieSmasherGame extends BaseGame {
 	public void update(long gameTime) {				
 		if (inputManager.isFirePressed()) {
 			PointF point = inputManager.getFirePoint();
-			Bullet bullet = player.fire(gameTime, point.x, point.y);
 			inputManager.setFirePresset(false);
-			gameObjectManager.addObject(bullet);
+			if (player.canFire(gameTime)) {
+				Bullet bullet = player.fire(gameTime, point.x, point.y);			
+				gameObjectManager.addObject(bullet);
+			}
 		}
 		
 		gameObjectManager.update(gameTime);

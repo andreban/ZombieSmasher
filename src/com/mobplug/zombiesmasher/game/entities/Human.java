@@ -6,7 +6,7 @@ import java.util.Collection;
 public class Human extends GameEntity {
 	private static final long DESTROY_TIMEOUT = 1000L;
 	private static final long SHIFTING_TIMEOUT = 2000L;
-	private static final float UNDEAD_SPEED = 0.5f;
+	private static final float UNDEAD_SPEED = 1.0f;
 	private static final long FIND_TARGET_TIMEOUT = 1000L;
 	public enum State{ALIVE, SHIFTING, UNDEAD, DEAD};
 	private long lastStateTime = 0L;
